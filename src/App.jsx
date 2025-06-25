@@ -8,6 +8,7 @@ import Home from './components/Home';
 import { UserDashboard } from './components/UserDashboard';
 import { AdminDashboard } from './components/AdminDashboard';
 import { AuthProvider, useAuth } from './context/AuthContext';
+import { QueueBooking } from './components/QueueBooking';
 
 const PrivateRoute = ({ children, requireAdmin }) => {
   const { isAuthenticated, user, loading } = useAuth();
@@ -62,6 +63,15 @@ function App() {
               </PrivateRoute>
             }
           />
+          <Route
+            path="/queue-booking"
+            element={
+              <PrivateRoute>
+                <QueueBooking />
+              </PrivateRoute>
+            }
+          />
+          <Route path="/QueueBooking" element={<QueueBooking />} />
         </Routes>
       </Router>
     </AuthProvider>
